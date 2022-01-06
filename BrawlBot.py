@@ -5,12 +5,26 @@ from discord.ext import commands
 
 intents = discord.Intents.default()
 intents.members = True
-client = commands.Bot(command_prefix="-", intents=intents)
 
-searchChannel = 928465831422230531
-miscChannel = 928465831422230531
-modChannel = 928465831422230531
-matchChannel = 928465831422230531
+clonebot = True
+
+if clonebot == True:
+    cpfx = "."
+elif clonebot == False:
+    cpfx = "-"
+
+client = commands.Bot(command_prefix=cpfx, intents=intents)
+
+if clonebot == False:
+    searchChannel = 928465831422230531
+    miscChannel = 928465831422230531
+    modChannel = 928465831422230531
+    matchChannel = 928465831422230531
+elif clonebot == True:
+    searchChannel = 928465831422230531
+    miscChannel = 928465831422230531
+    modChannel = 928465831422230531
+    matchChannel = 928465831422230531
 channelList = [searchChannel, miscChannel, modChannel, matchChannel]
 
 modkey = '🔑'
@@ -1290,3 +1304,4 @@ async def on_message(message):
             await matchWindowObj.edit(embed=newEmbed)
             for icon in winloss:
                 await matchWindowObj.add_reaction(icon)
+                client.run(OTI4NDUyMzA1NjI2NDY4NDA0.YdY-lw.DL-yZ7yDVpbHstJOhMRYq63lfzg) 
