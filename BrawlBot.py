@@ -7,10 +7,10 @@ intents = discord.Intents.default()
 intents.members = True
 client = commands.Bot(command_prefix="-", intents=intents)
 
-searchChannel = 854427760389652490
-miscChannel = 854428093459202099
-modChannel = 854428188746580059
-matchChannel = 854428351800016907
+searchChannel = 928465831422230531
+miscChannel = 928465831422230531
+modChannel = 928465831422230531
+matchChannel = 928465831422230531
 channelList = [searchChannel, miscChannel, modChannel, matchChannel]
 
 modkey = '🔑'
@@ -399,7 +399,7 @@ async def helpme(ctx):
                   f"> \n"
                   f"> You can look up another player's ranking info by @'ing them after the command.\n"
                   f"> \n"
-                  f"> example: ``-rank @APR Financing``\n"
+                  f"> example: ``-rank @ninja1167``\n"
                   f"> \n"
                   f"> You can also look up a specific player based on standing within a specific ladder.\n"
                   f"> \n"
