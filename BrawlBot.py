@@ -394,7 +394,6 @@ async def helpme(ctx):
                   f"> \n"
                   f"> examples:\n"
                   f"> ``-ranked netp bo3``\n"
-                  f"> ``-ranked wifi bo5``\n"
                   f"**__rank__**\n"
                   f"> This command allows you to view your own rank and standing in all ladders you're participating in. (Only usable in <#{miscChannel}>)\n"
                   f"> \n"
@@ -406,17 +405,13 @@ async def helpme(ctx):
                   f"> \n"
                   f"> exmaples:\n"
                   f"> ``-rank netp 3`` (retrieves the player who is top 3 in the netplay ladder)\n"
-                  f"> ``-rank wifi 5`` (retrieves the player who is top 5 in the wiimmfi ladder)\n"
-                  f"**__top__** ``(Online Type)`` ``(Page Number)``\n"
+                  f"**__top__** ``(netp)`` ``(Page Number)``\n"
                   f"> Displays a leaderboard of the top 10 players for the specified ladder type. (Only usable in <#{miscChannel}>)\n"
-                  f"> Online Type = ``netp`` (if you use netplay) or ``wifi`` (if you use wiimmfi)\n"
-                  f"> Page Number = input a number to view a specific page of the leaderboard.\n"
+                  f"> Page Number = input number to view a specific page of the leaderboard.\n"
                   f"> If no number is given, default page will be 1.\n"
                   f"> \n"
                   f"> examples:\n"
                   f"> ``-top netp`` (Shows the top 1-10 players in the netplay ladder)\n"
-                  f"> ``-top wifi 2`` (Shows the top 11-20 players in the wifi ladder)\n"
-                  f"> ``-top wifi 3`` (Shows the top 21-30 players in the wifi ladder)\n"
                   f"**__characters__**\n"
                   f"> This command sends a DM with a list containing all character inputs BrawlBot can recognize.\n"
                   f"> This is only relevant during character selections when in a ranked match.\n")
@@ -635,24 +630,6 @@ async def rank(ctx):
                         value=valueContentNetp,
                         inline=False)
 
-    if playerID in rankings["WIFI"]:
-        showWifiELO = displayELO(playerID, 'WIFI')
-
-        if playerID in preranked["WIFI"].keys():
-            gamesNeeded = preranked["WIFI"][playerID]
-            plural = ""
-            if gamesNeeded > 1:
-                plural = "s"
-            valueContentWifi = f"Player currently unranked. \n{gamesNeeded} more game{plural} needed to be ranked."
-
-        else:
-            results = getPlacement(rankings["WIFI"], playerID, "WIFI")
-            wifiPlacement = results[0]
-            wifiNumOfPlayers = results[1]
-            valueContentWifi = f"(Top {wifiPlacement} out of {wifiNumOfPlayers})"
-        embed.add_field(name=f"{wifiSymbol} WIFI ELO: {showWifiELO}",
-                        value=valueContentWifi,
-                        inline=False)
     await ctx.send(embed=embed)
 
 
