@@ -1304,4 +1304,4 @@ async def on_message(message):
             await matchWindowObj.edit(embed=newEmbed)
             for icon in winloss:
                 await matchWindowObj.add_reaction(icon)
-                client.run(OTI4NDUyMzA1NjI2NDY4NDA0.YdY-lw.DL-yZ7yDVpbHstJOhMRYq63lfzg) 
+               
