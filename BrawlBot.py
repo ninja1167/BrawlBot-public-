@@ -1,7 +1,10 @@
+import os
+my_secret = os.environ['TOKEN']
 import discord
 import random
 import json
 from discord.ext import commands
+from keep_alive import keep_alive
 
 intents = discord.Intents.default()
 intents.members = True
@@ -1844,8 +1847,8 @@ async def on_message(message):
                                                         f"Choose your character for Game {gameCount}! \n Type out what character you will use.\n"
                                                         f"If you're staying on the same character, type ''stay''.\n"
                                                         f"\n"
-                                                        f"If you're having trouble selecting a character, type ``-characters``"
-                                                        " to see a list of all character inputs I can recognize.",
+                                                        f"If you're having trouble selecting a character, type ``-characters``",
+      
                                             color=defaultColor)
                 charaSelect.set_thumbnail(
                     url="https://cdn.discordapp.com/emojis/919693698093183036.webp?size=160&quality=lossless")
@@ -1873,5 +1876,5 @@ async def on_message(message):
                 for icon in winloss:
                     await matchWindowObj.add_reaction(icon)
 
-
-client.run("TOKEN")
+keep_alive()
+client.run(my_secret)
