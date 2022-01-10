@@ -913,8 +913,8 @@ async def ranked(ctx):
         await ctx.send("‼ You're currently in a match. ‼", delete_after=4)
         return
 
-    matchType = ctx.message.content[8:12].upper()
-    setType = ctx.message.content[13:16]
+    matchType = "NETP"
+    setType = ctx.message.content[8:11].upper()
     if matchType != "NETP" and matchType != "WIFI":
         return
     if setType not in sets:
@@ -1239,7 +1239,8 @@ async def on_reaction_add(reaction, user):
             winnerChara = matches[messageID]['players'][winner]['character']
             if dsl == True:
                 dslstage = matches[messageID]['stages']
-                matches[messageID]['players'][winner]['dsl'].append(dslstage[0])
+                if dslstage[0] not in matches[messageID]['players'][winner]['dsl']:
+                    matches[messageID]['players'][winner]['dsl'].append(dslstage[0])
             #print("dsl check: ", matches[messageID]['players'][winner])
             matchWindowObj = matches[messageID]["messageObj"]
             embedCount = matches[messageID]["gameCount"] - 1
