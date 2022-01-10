@@ -790,22 +790,22 @@ async def top(ctx):
     if banCheck(ctx.message.author.id) == True:
         return
 
-    topType = ctx.message.content[4:9].upper().strip()
-    page = ctx.message.content[9:].strip()
+    topType = "NETP"
+    page = ctx.message.content[4:].strip()
     if page == "":
         page = 1
     page = int(page)
-    if topType == "WIFI" or topType == "NETP":
-        symbol = attributes[topType]["symbol"]
-        embed = discord.Embed(
-            title=f"{symbol} {topType} Leaderboard",
-            color=attributes[topType]["color"],
-            description=buildLBoard(rankings[topType], topType, page, topType)
-        )
-        await ctx.send(embed=embed)
+    #if topType == "WIFI" or topType == "NETP":
+    symbol = attributes[topType]["symbol"]
+    embed = discord.Embed(
+        title=f"{symbol} {topType} Leaderboard",
+        color=attributes[topType]["color"],
+        description=buildLBoard(rankings[topType], topType, page, topType)
+    )
+    await ctx.send(embed=embed)
         # print("recognized")
-    else:
-        await ctx.send("Please specify what type of leaderboard you'd like to view. (NETP or WIFI)", delete_after=10)
+    #else:
+        #await ctx.send("Please specify what type of leaderboard you'd like to view. (NETP or WIFI)", delete_after=10)
 
 
 @client.command()
@@ -821,27 +821,25 @@ async def rank(ctx):
     if banCheck(authorID) == True:
         return
 
-    if ctx.message.content[6:10].upper() == "NETP" or ctx.message.content[6:10].upper() == "WIFI":
-        boardType = ctx.message.content[6:10].upper()
-        standing = ctx.message.content[11:]
-        if standing == "":
-            await ctx.send("Please specify what player standing you'd like to search for \n (ie. ``-rank wifi 3``)",
-                           delete_after=8)
-            return
-        standing = int(standing)
-        # print("boardType: ", boardType)
-        # print("standing: ", standing)
-        playerID = findPlayer(boardType, standing)
+    boardType = "NETP"
+    standing = ctx.message.content[6:].strip()
+    if standing == "":
+        await ctx.send("Please specify what player standing you'd like to search for \n (ie. ``-rank wifi 3``)",
+                        delete_after=8)
+        return
+    standing = int(standing)
+    # print("boardType: ", boardType)
+    # print("standing: ", standing)
+    playerID = findPlayer(boardType, standing)
 
-
-    else:
-        playerID = ctx.message.content[9:-1]
+    #else:
+        #playerID = ctx.message.content[9:-1]
         # print("ctx:", ctx.message.content)
         # print("playerID:", playerID)
-        if playerID == "":
-            playerID = authorID
-        else:
-            playerID = int(playerID)
+        #if playerID == "":
+            #playerID = authorID
+        #else:
+            #playerID = int(playerID)
 
     playerInfo = client.get_user(playerID)
 
@@ -914,7 +912,7 @@ async def ranked(ctx):
         return
 
     matchType = "NETP"
-    setType = ctx.message.content[8:11].upper()
+    setType = ctx.message.content[8:11]
     if matchType != "NETP" and matchType != "WIFI":
         return
     if setType not in sets:
