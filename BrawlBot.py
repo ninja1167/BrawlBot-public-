@@ -6,6 +6,7 @@ import json
 from discord.ext import commands
 from keep_alive import keep_alive
 
+
 intents = discord.Intents.default()
 intents.members = True
 
@@ -28,6 +29,7 @@ elif clonebot == True:
     miscChannel = 929231150386409512
     modChannel = 929231150386409512
     matchChannel = 929231150386409512
+    
 
 channelList = [searchChannel, miscChannel, modChannel, matchChannel]
 
@@ -92,7 +94,7 @@ brawlChara = {"mario": '<:Mario:929115619859759185>', "donkey kong": '<:DK:92911
               "mew2": '<:Mewtwo:929115373863841832>',
               "pichu": '<:Pichu:856660483474325505>', "young link": '<:Ylink:929115997074518067>',
               "falco": '<:Falco:856660378682654740>', "ylink": '<:Ylink:929115997074518067>',
-              "yink": '<:Ylink:929115997074518067>',
+              "yink": '<:Ylink:929115997074518067>',"yl": '<:Ylink:929115997074518067>',
               "worse fox": '<:Falco:856660378682654740>',
               "daisy": '<:Peach:856660438291578900>',
               "peach": '<:Peach:856660438291578900>', "yoshi": '<:Yoshi:929115897556262963>',
@@ -554,13 +556,12 @@ async def helpme(ctx):
     await dm.send(f"**command prefix: ``-``**\n"
                   f"(begin every command with ``-`` in order for BrawlBot to recognize your command.)\n"
                   f"\n"
-                  f"**__ranked__** ``(Online Type)`` ``(Set Type)``\n"
+                  f"**__ranked__** ``(Set Type)``\n"
                   f"> This command begins a search queue for a ranked set. (Only usable in <#{searchChannel}>)\n"
-                  f"> Online Type = ``netp`` (if you use netplay) \n"
                   f"> Set Type = ``bo3`` (best of 3) or ``bo5`` (best of 5)\n"
                   f"> \n"
                   f"> examples:\n"
-                  f"> ``-ranked netp bo3``\n"
+                  f"> ``-ranked bo3``\n"
                   f"**__rank__**\n"
                   f"> This command allows you to view your own rank and standing in all ladders you're participating in. (Only usable in <#{miscChannel}>)\n"
                   f"> \n"
@@ -571,18 +572,17 @@ async def helpme(ctx):
                   f"> You can also look up a specific player based on standing within a specific ladder.\n"
                   f"> \n"
                   f"> exmaples:\n"
-                  f"> ``-rank netp 3`` (retrieves the player who is top 3 in the netplay ladder)\n"
-                  f"> ``-rank netp 5`` (retrieves the player who is top 5 in the netplay ladder)\n"
-                  f"**__top__** ``(Online Type)`` ``(Page Number)``\n"
+                  f"> ``-rank  3`` (retrieves the player who is top 3 in the netplay ladder)\n"
+                  f"> ``-rank  5`` (retrieves the player who is top 5 in the netplay ladder)\n"
+                  f"**__top__**  ``(Page Number)``\n"
                   f"> Displays a leaderboard of the top 10 players for the specified ladder type. (Only usable in <#{miscChannel}>)\n"
-                  f"> Online Type = ``netp`` (if you use netplay) \n"
                   f"> Page Number = input a number to view a specific page of the leaderboard.\n"
                   f"> If no number is given, default page will be 1.\n"
                   f"> \n"
                   f"> examples:\n"
-                  f"> ``-top netp`` (Shows the top 1-10 players in the netplay ladder)\n"
-                  f"> ``-top netp 2`` (Shows the top 11-20 players in the netplay ladder)\n"
-                  f"> ``-top netp 3`` (Shows the top 21-30 players in the netplay ladder)\n"
+                  f"> ``-top `` (Shows the top 1-10 players in the netplay ladder)\n"
+                  f"> ``-top 2`` (Shows the top 11-20 players in the netplay ladder)\n"
+                  f"> ``-top 3`` (Shows the top 21-30 players in the netplay ladder)\n"
                   f"**__characters__**\n"
                   f"> This command sends a DM with a list containing all character inputs BrawlBot can recognize.\n"
                   f"> This is only relevant during character selections when in a ranked match.\n"
@@ -592,7 +592,7 @@ async def helpme(ctx):
                   f"**__smashdown__**\n"
                   f"> This command sets up a smashdown card to help keep track of characters and score.\n"
                   f"> (usable in the freeplay channels)"
-                  f"> Ironman and smashdown may not work. \n")
+                  f"> Smashdown may not work. \n")
     await ctx.send("I sent you a DM with a list of my commands.")
 
 
@@ -1877,3 +1877,5 @@ async def on_message(message):
 
 keep_alive()
 client.run(my_secret)
+
+

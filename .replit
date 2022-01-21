@@ -1,2 +1,2 @@
 language = "python3"
-run = "python BrawlBot.py"
+run = "python BrawlBot.py & python loop.py"
