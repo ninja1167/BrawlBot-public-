@@ -5,6 +5,7 @@ import random
 import json
 from discord.ext import commands
 from keep_alive import keep_alive
+rankvar = 1
 
 
 intents = discord.Intents.default()
@@ -22,13 +23,15 @@ client = commands.Bot(command_prefix=cpfx, intents=intents)
 if clonebot == False:
     searchChannel = 929231150386409512
     miscChannel = 929231150386409512
-    modChannel = 929231150386409512
+    modChannel = 929116688820080693
     matchChannel = 929231150386409512
+    testChannel = 928465831422230531
 elif clonebot == True:
     searchChannel = 929231150386409512
     miscChannel = 929231150386409512
-    modChannel = 929231150386409512
+    modChannel = 929116688820080693
     matchChannel = 929231150386409512
+    testChannel = 928465831422230531
     
 
 channelList = [searchChannel, miscChannel, modChannel, matchChannel]
@@ -57,6 +60,7 @@ wifiColor = 16613797  # light pink
 defaultColor = 15174967  # orange
 netpSymbol = '<:netplay:928849825250824282>'
 wifiSymbol = '<:netplay:928849825250824282>'
+boardType = "NETP"
 attributes = {"WIFI": {'symbol': wifiSymbol, 'color': wifiColor}, "NETP": {'symbol': netpSymbol, 'color': netpColor}}
 
 stageTNs = {
@@ -70,57 +74,57 @@ stageTNs = {
 
 
 
-brawlChara = {"mario": '<:Mario:929115619859759185>', "donkey kong": '<:DK:929116330257416275>',
-              "dk": '<:DK:929116330257416275>',
+brawlChara = {"mario": '<:Mario:936378975511519274>', "donkey kong": '<:DK:938447276509134959>',
+              "dk": '<:DK:938447276509134959>',
               "link": '<:Link:856660418201780244>', "samus": '<:Samus:856660473994805298>',
               "kirby": '<:Kirby:861785546677288973>', "fox": '<:Fox:856660399764144129>',
-              "pikachu": '<:Pika:901663265350881311>', "marth": '<:Marth:856660427713806337>',
-              "mr. game & watch": '<:GW:929115047656046703>',
-              "mr.game & watch": '<:GW:929115047656046703>',
-              "mr.g&w": '<:GW:929115047656046703>',
-              "mr game and watch": '<:GW:929115047656046703>',
-              "game n watch": '<:GW:929115047656046703>',
-              "mr game n watch": '<:GW:929115047656046703>',
-              "gnw": '<:GW:929115047656046703>', "mr gnw": '<:GW:929115047656046703>',
-              "gandw": '<:GW:929115047656046703>',
-              "mr game & watch": '<:GW:929115047656046703>',
-              "game & watch": '<:GW:929115047656046703>',
-              "gw": '<:GW:929115047656046703>', "mr.game and watch": '<:GW:929115047656046703>',
-              "g&w": '<:GW:929115047656046703>', "luigi": '<:Luigi:881604508424216636>',
+              "pikachu": '<:Pika:936378588008161350>', "marth": '<:Marth:856660427713806337>',
+              "mr. game & watch": '<:GW:938447276450394112>',
+              "mr.game & watch": '<:GW:938447276450394112>',
+              "mr.g&w": '<:GW:938447276450394112>',
+              "mr game and watch": '<:GW:938447276450394112>',
+              "game n watch": '<:GW:938447276450394112>',
+              "mr game n watch": '<:GW:938447276450394112>',
+              "gnw": '<:GW:938447276450394112>', "mr gnw": '<:GW:938447276450394112>',
+              "gandw": '<:GW:938447276450394112>',
+              "mr game & watch": '<:GW:938447276450394112>',
+              "game & watch": '<:GW:938447276450394112>',
+              "gw": '<:GW:938447276450394112>', "mr.game and watch": '<:GW:938447276450394112>',
+              "g&w": '<:GW:938447276450394112>', "luigi": '<:Luigi:881604508424216636>',
               "roy": '<:Roy:856660461130874930>', "green mario": '<:Luigi:881604508424216636>',
               "weeg": '<:Luigi:881604508424216636>',
               "zelda": '<:Zelda:856660494269022229>',
-              "sheik": '<:Sheik:856660483474325505>', "mewtwo": '<:Mewtwo:929115373863841832>',
-              "mew2": '<:Mewtwo:929115373863841832>',
-              "pichu": '<:Pichu:856660483474325505>', "young link": '<:Ylink:929115997074518067>',
-              "falco": '<:Falco:856660378682654740>', "ylink": '<:Ylink:929115997074518067>',
-              "yink": '<:Ylink:929115997074518067>',"yl": '<:Ylink:929115997074518067>',
+              "sheik": '<:Sheik:856660483474325505>', "mewtwo": '<:Mewtwo:938447276601380894>',
+              "mew2": '<:Mewtwo:938447276601380894>',
+              "pichu": '<:Pichu:856660483474325505>', "young link": '<:Ylink:936379092922687498>',
+              "falco": '<:Falco:856660378682654740>', "ylink": '<:Ylink:936379092922687498>',
+              "yink": '<:Ylink:936379092922687498>',"yl": '<:Ylink:936379092922687498>',
               "worse fox": '<:Falco:856660378682654740>',
               "daisy": '<:Peach:856660438291578900>',
-              "peach": '<:Peach:856660438291578900>', "yoshi": '<:Yoshi:929115897556262963>',
+              "peach": '<:Peach:856660438291578900>', "yoshi": '<:Yoshi:936379260019556432>',
               "ganondorf": '<:Ganon:856660407828742155>', "ganon": '<:Ganon:856660407828742155>',
               "ice climbers": '<:Icies:888612645387796551>',
               "ics": '<:Icies:888612645387796551>', "ic": '<:Icies:888612645387796551>',
               "icies": '<:Icies:888612645387796551>', 
-              "ness": '<:Ness:929115206670487572>', 
-              "bowser": '<:Bowser:929116220312150107>', 
+              "ness": '<:Ness:938447276416851988>', 
+              "bowser": '<:Bowser:938447276370714694>', 
                "captain falcon": '<:Falcon:856660388753309696>',
               "cf": '<:Falcon:856660388753309696>',
               "falcon": '<:Falcon:856660388753309696>', "jigglypuff": '<:Puff:856660446810341377>',
               "puff": '<:Puff:856660446810341377>', "doc": '<:Doc:856660362207166534>', "doctor mario": '<:Doc:856660362207166534>',
               }
 
-characterlist = ['<:Mario:929115619859759185>', '<:DK:929116330257416275>', '<:Link:856660418201780244>',
+characterlist = ['<:Mario:936378975511519274>', '<:DK:938447276509134959>', '<:Link:856660418201780244>',
                  '<:Samus:856660473994805298>', '<:Roy:856660461130874930>',
                  '<:Kirby:861785546677288973>', '<:Fox:856660399764144129>', 
-                 '<:Pika:901663265350881311>', '<:Marth:856660427713806337>', '<:GW:929115047656046703>',
-                 '<:Luigi:881604508424216636>', '<:Mewtwo:929115373863841832>', '<:Zelda:856660494269022229>',
+                 '<:Pika:936378588008161350>', '<:Marth:856660427713806337>', '<:GW:938447276450394112>',
+                 '<:Luigi:881604508424216636>', '<:Mewtwo:938447276601380894>', '<:Zelda:856660494269022229>',
                  '<:Sheik:856660483474325505>', '<:Pichu:856660483474325505>', '<:Falco:856660378682654740>',
-                 '<:Peach:856660438291578900>', '<:Yoshi:929115897556262963>',
+                 '<:Peach:856660438291578900>', '<:Yoshi:936379260019556432>',
                  '<:Ganon:856660407828742155>', '<:Icies:888612645387796551>',
-                 '<:Ylink:929115997074518067>',
-                 '<:Ness:929115206670487572>',
-                 '<:Bowser:929116220312150107>', 
+                 '<:Ylink:936379092922687498>',
+                 '<:Ness:938447276416851988>',
+                 '<:Bowser:938447276370714694>', 
                  '<:Falcon:856660388753309696>', '<:Puff:856660446810341377>', '<:Doc:856660362207166534>'
                 ]
 
@@ -162,9 +166,9 @@ sdgames = {}
 
 searchIcons = [abort, challenge]
 searchSelection = [accept, cancel]
-winloss = ["<:win:929191556567695440>", "<:lose:929191556722860042>"]
-win = "<:win:929191556567695440>"
-loss = "<:lose:929191556722860042>"
+winloss = ["<:win:936376084348424232>", "<:lose:936375892194758706>"]
+win = "<:win:936376084348424232>"
+loss = "<:lose:936375892194758706>"
 emotes2stage = {'<:Battlefield:928753478329831424>': "Battlefield",
                 '<:FinalDestination:928755520385470524>': "Final Destination",
                 '<:DL64:928756262601105458>': "Dream Land",
@@ -592,7 +596,7 @@ async def helpme(ctx):
                   f"**__smashdown__**\n"
                   f"> This command sets up a smashdown card to help keep track of characters and score.\n"
                   f"> (usable in the freeplay channels)"
-                  f"> Smashdown may not work. \n")
+                  f"> Smashdown will work. \n")
     await ctx.send("I sent you a DM with a list of my commands.")
 
 
@@ -627,23 +631,18 @@ async def smashdown(ctx):
         "loser": "n/a",
         "messageObj": smashdowngame,
         "winsNeeded": 10,
-        "remaining": ['<:mario:838822011412676708>', '<:donkeykong:838822011114356760>', '<:link:838822011286716486>',
-                      '<:samus:838822011009499147>', '<:zerosuitsamus:838822011299037234>',
-                      '<:kirby:838822010968735796>', '<:fox:838822011408613396>',
-                      '<:pikachu:838822011341111346>', '<:marth:838822011122745376>',
-                      '<:mrgameandwatch:838822011441774642>',
-                      '<:luigi:838822011421196358>', '<:diddykong:838822011337572394>', '<:zelda:838822011304280164>',
-                      '<:sheik:838822011308212274>', '<:pit:838822011084996639>', '<:metaknight:838822011248967700>',
-                      '<:falco:838822011366408302>', '<:pokemontrainer:838822010884194325>',
-                      '<:ike:838822010921943102>',
-                      '<:snake:838822011328659536>', '<:peach:838822011030863874>', '<:yoshi:838822011164950582>',
-                      '<:ganondorf:838822011324203088>', '<:iceclimbers:838822010992984117>',
-                      '<:kingdedede:838822011224195082>',
-                      '<:wolf:838822011215413268>', '<:lucario:838822011349893181>', '<:ness:838822011031519314>',
-                      '<:sonic:838822011202961499>', '<:bowser:838822011371257918>', '<:wario:838822011240448051>',
-                      '<:toonlink:838822011181727774>', '<:rob:838822011375452170>', '<:olimar:838822011303362610>',
-                      '<:captainfalcon:838822011370340362>', '<:jigglypuff:838822010929807401>',
-                      '<:lucas:838822011248836668>'],
+        "remaining": ['<:Mario:936378975511519274>', '<:DK:938447276509134959>', '<:Link:856660418201780244>',
+                 '<:Samus:856660473994805298>', '<:Roy:856660461130874930>',
+                 '<:Kirby:861785546677288973>', '<:Fox:856660399764144129>', 
+                 '<:Pika:936378588008161350>', '<:Marth:856660427713806337>', '<:GW:938447276450394112>',
+                 '<:Luigi:881604508424216636>', '<:Mewtwo:938447276601380894>', '<:Zelda:856660494269022229>',
+                 '<:Sheik:856660483474325505>', '<:Pichu:856660483474325505>', '<:Falco:856660378682654740>',
+                 '<:Peach:856660438291578900>', '<:Yoshi:936379260019556432>',
+                 '<:Ganon:856660407828742155>', '<:Icies:888612645387796551>',
+                 '<:Ylink:936379092922687498>',
+                 '<:Ness:938447276416851988>',
+                 '<:Bowser:929116220312150107>', 
+                 '<:Falcon:856660388753309696>', '<:Puff:856660446810341377>', '<:Doc:856660362207166534>'],
         "closed": False,
     }
 
@@ -821,25 +820,28 @@ async def rank(ctx):
     if banCheck(authorID) == True:
         return
 
-    boardType = "NETP"
-    standing = ctx.message.content[6:].strip()
-    if standing == "":
-        await ctx.send("Please specify what player standing you'd like to search for \n (ie. ``-rank wifi 3``)",
-                        delete_after=8)
-        return
-    standing = int(standing)
-    # print("boardType: ", boardType)
-    # print("standing: ", standing)
-    playerID = findPlayer(boardType, standing)
+    if ctx.message.content[6:].isdigit():
+        boardType = "NETP"
+        standing = ctx.message.content[6:]
+        if standing == "":
+            await ctx.send("Please specify what player standing you'd like to search for \n (ie. ``-rank wifi 3``)",
+                           delete_after=8)
+            return
+        standing = int(standing)
+        # print("boardType: ", boardType)
+        # print("standing: ", standing)
+        playerID = findPlayer(boardType, standing)
 
-    #else:
-        #playerID = ctx.message.content[9:-1]
+
+    else:
+        playerID = ctx.message.content[9:-1]
         # print("ctx:", ctx.message.content)
         # print("playerID:", playerID)
-        #if playerID == "":
-            #playerID = authorID
-        #else:
-            #playerID = int(playerID)
+        if playerID == "":
+            playerID = authorID
+        else:
+            playerID = int(playerID)
+
 
     playerInfo = client.get_user(playerID)
 
@@ -874,35 +876,17 @@ async def rank(ctx):
         embed.add_field(name=f"{netpSymbol} NETP ELO: {showNetpELO}",
                         value=valueContentNetp,
                         inline=False)
-
-    if playerID in rankings["WIFI"]:
-        showWifiELO = displayELO(playerID, 'WIFI')
-
-        if playerID in preranked["WIFI"].keys():
-            gamesNeeded = preranked["WIFI"][playerID]
-            plural = ""
-            if gamesNeeded > 1:
-                plural = "s"
-            valueContentWifi = f"Player currently unranked. \n{gamesNeeded} more game{plural} needed to be ranked."
-
-        else:
-            results = getPlacement(rankings["WIFI"], playerID, "WIFI")
-            wifiPlacement = results[0]
-            wifiNumOfPlayers = results[1]
-            valueContentWifi = f"(Top {wifiPlacement} out of {wifiNumOfPlayers})"
-        embed.add_field(name=f"{wifiSymbol} WIFI ELO: {showWifiELO}",
-                        value=valueContentWifi,
-                        inline=False)
     await ctx.send(embed=embed)
 
 
 @client.command()
-async def ranked(ctx):
+async def bo3(ctx):
     # checks if search message is from the search channel
     if ctx.message.channel.id != searchChannel:
-        await ctx.message.delete()
-        await ctx.send(f"This command can only be used in <#{searchChannel}>", delete_after=10)
-        return
+        if ctx.message.channel.id !=testChannel:
+            await ctx.message.delete()
+            await ctx.send(f"This command can only be used in <#{searchChannel}>", delete_after=10)
+            return
     if banCheck(ctx.message.author.id) == True:
         return
     # if user is already in a match, they will be unable to queue up a search
@@ -912,7 +896,8 @@ async def ranked(ctx):
         return
 
     matchType = "NETP"
-    setType = ctx.message.content[8:11]
+    setType = "bo3"
+    
     if matchType != "NETP" and matchType != "WIFI":
         return
     if setType not in sets:
@@ -962,6 +947,77 @@ async def ranked(ctx):
 
     for icon in searchIcons:
         await matchSearch.add_reaction(icon)
+
+
+@client.command()
+async def bo5(ctx):
+    # checks if search message is from the search channel
+    if ctx.message.channel.id != searchChannel:
+        if ctx.message.channel.id !=testChannel:
+            await ctx.message.delete()
+            await ctx.send(f"This command can only be used in <#{searchChannel}>", delete_after=10)
+            return
+    if banCheck(ctx.message.author.id) == True:
+        return
+    # if user is already in a match, they will be unable to queue up a search
+    if ctx.message.author.id in players2matches.keys():
+        await ctx.message.delete()
+        await ctx.send("‼ You're currently in a match. ‼", delete_after=4)
+        return
+
+    matchType = "NETP"
+    setType = "bo5"
+   
+    if matchType != "NETP" and matchType != "WIFI":
+        return
+    if setType not in sets:
+        return
+
+    if ctx.message.author.id in searching[matchType][setType]:
+        await ctx.send("‼ You're already searching for that. ‼", delete_after=4)
+        await ctx.message.delete()
+        return
+
+    if matchType == "NETP":
+        embedColor = netpColor
+        icon = attributes["NETP"]['symbol']
+    else:
+        embedColor = wifiColor
+        icon = attributes["WIFI"]['symbol']
+
+    playerID = ctx.message.author.id
+
+    # if the player isn't already in the ranking system, they get added
+    if playerID not in rankings[matchType].keys():
+        addPlayer(playerID, matchType)
+    # print(rankings)
+
+    showELO = displayELO(playerID, matchType)
+    embed = discord.Embed(
+        title=f"{ctx.message.author} [{showELO}] is searching for a match... \n"
+              f"( {icon} {matchType} || {setType} )",
+        description=f"({abort} = cancel search)\n(Search will be deleted after 1 hour)\nClick on {challenge} to challenge them!\n"
+                    f"Or unreact to withdraw your challenge.",
+        color=discord.Colour(embedColor))
+    embed.set_thumbnail(url=f"{ctx.message.author.avatar_url}")
+    matchSearch = await ctx.send(embed=embed, delete_after=3600)
+    searching[matchType][setType].append(playerID)
+    searchMessages[matchSearch.id] = {"player": playerID,
+                                      "matchType": matchType,
+                                      "setType": setType,
+                                      "challenges": [],
+                                      "challengers": [],
+                                      "color": embedColor,
+                                      "messageObj": matchSearch,
+                                      "queue": ctx}
+    # Keeps track of the player who sent the search, type of match, and type of set. and distinguishes search messages
+
+    # print("searching: ", searching)
+    # print("searchMessages:", searchMessages)
+
+    for icon in searchIcons:
+        await matchSearch.add_reaction(icon)
+
 
 
 @client.event
@@ -1143,8 +1199,8 @@ async def on_reaction_add(reaction, user):
                                                     f"Stage:\n"
                                                     f"{matches[messageID]['stages'][0]} {emotes2stage[matches[messageID]['stages'][0]]} \n"
                                                     f"\n"
-                                                    f"(winner reports by clicking <:win:929191556567695440> / "
-                                                    f"loser reports by clicking <:lose:929191556722860042>)",
+                                                    f"(winner reports by clicking <:win:936376084348424232> / "
+                                                    f"loser reports by clicking <:lose:936375892194758706>)",
                                               inline=False)
                         newEmbed.set_thumbnail(url=stageTNs[matches[messageID]['stages'][0]])
                         await reaction.clear()
@@ -1160,26 +1216,13 @@ async def on_reaction_add(reaction, user):
                 newEmbed = matchWindowObj.embeds[0]
                 gameCount = matches[messageID]["gameCount"]
                 selecting = opponents[user.id]
-                if user.id == matches[messageID]["banning"]:
+                if  matches[messageID]["winsNeeded"] == 3:
+                  if user.id == matches[messageID]["banning"]:
                     matches[messageID]["banning"] = "N/A"
                     #print("made it to bans")
                     matches[messageID]["stagesel"] = opponents[user.id]
-                    matches[messageID]["stages"].remove(str(reaction.emoji))
-                    #print("remaining stages", matches[messageID]["stages"])
-                    newEmbed.set_field_at(gameCount - 1, name=f"Game {gameCount}",
-                                            value=f""
-                                                f"\n"
-                                                f"Waiting for <@{selecting}> to select their counterpick. (click on the reactions):\n"
-                                                f"{showstagelist(matches[messageID]['stages'])}",
-                                            inline=False)
-                    await reaction.clear()
-                    await matchWindowObj.edit(embed=newEmbed)
-
-                elif matches[messageID]["stagesel"] == user.id:
-                    #print("made it to stage selection")
-                    matches[messageID]["banning"] = "N/A"
-                    matches[messageID]["stagesel"] = "N/A"
                     stage = f"<:{reaction.emoji.name}:{reaction.emoji.id}>"
+                    #print("remaining stages", matches[messageID]["stages"])
                     newEmbed.set_field_at(gameCount - 1, name=f"Game {gameCount}",
                                               value=f"(Waiting for character selections...)\n"
                                                     f"Stage:\n"
@@ -1204,6 +1247,58 @@ async def on_reaction_add(reaction, user):
                     charaSelect.set_thumbnail(
                         url="https://cdn.discordapp.com/emojis/919693698093183036.webp?size=160&quality=lossless")
                     await dm.send(embed=charaSelect)
+                  
+                             
+                elif  matches[messageID]["winsNeeded"] == 2:  
+                  #print("made it to game 2+")
+                  matchWindowObj = matches[messageID]['messageObj']
+                  newEmbed = matchWindowObj.embeds[0]
+                  gameCount = matches[messageID]["gameCount"]
+                  selecting = opponents[user.id]
+                  if user.id == matches[messageID]["banning"]:
+                      matches[messageID]["banning"] = "N/A"
+                      #print("made it to bans")
+                      matches[messageID]["stagesel"] = opponents[user.id]
+                      matches[messageID]["stages"].remove(str(reaction.emoji))
+                      #print("remaining stages", matches[messageID]["stages"])
+                      newEmbed.set_field_at(gameCount - 1, name=f"Game {gameCount}",
+                                              value=f""
+                                                  f"\n"
+                                                  f"Waiting for <@{selecting}> to select their counterpick. (click on the reactions):\n"
+                                                  f"{showstagelist(matches[messageID]['stages'])}",
+                                              inline=False)
+                      await reaction.clear()
+                      await matchWindowObj.edit(embed=newEmbed)
+
+                  elif matches[messageID]["stagesel"] == user.id:
+                      #print("made it to stage selection")
+                      matches[messageID]["banning"] = "N/A"
+                      matches[messageID]["stagesel"] = "N/A"
+                      stage = f"<:{reaction.emoji.name}:{reaction.emoji.id}>"
+                      newEmbed.set_field_at(gameCount - 1, name=f"Game {gameCount}",
+                                                value=f"(Waiting for character selections...)\n"
+                                                      f"Stage:\n"
+                                                      f"{stage} {emotes2stage[stage]} \n"
+                                                      f"\n",
+                                                inline=False)
+                      newEmbed.set_thumbnail(url=stageTNs[stage])
+                      matches[messageID]["heading"] = "N/A"
+                      for icon in matches[messageID]['stages']:
+                          await matchWindowObj.clear_reaction(icon)
+                      matches[messageID]["stages"] = [f"{stage}"]
+                      await matchWindowObj.edit(embed=newEmbed)
+
+                      dm = await (client.get_user(selecting)).create_dm()
+                      charaSelect = discord.Embed(title=f"[Game {gameCount} | {stage} {emotes2stage[stage]}]",
+                                                  description=f"Choose your character for Game {gameCount}! \n Type out what character you will use.\n"
+                                                              f"If you're staying on the same character, type ''stay''\n"
+                                                              f"\n"
+                                                                  f"If you're having trouble selecting a character, type ``-characters``"
+                                                                  " to see a list of all character inputs I can recognize.",
+                                                      color=defaultColor)
+                      charaSelect.set_thumbnail(
+                          url="https://media.discordapp.net/attachments/405387786036707329/843029286961414144/coinhand2.png")
+                      await dm.send(embed=charaSelect)
 
         # event when win or loss is clicked
         elif str(reaction.emoji) in winloss and user.id in matches[reaction.message.id]["players"]:
@@ -1263,7 +1358,10 @@ async def on_reaction_add(reaction, user):
                 matches[messageID]["stages"] = fullstagelist[:]
                 #print("fullstagelist: ", fullstagelist)
                 #print("remaining stages after winloss: ", matches[messageID]["stages"])
-            matches[messageID]["banning"] = matches[messageID]["winner"]
+            if  matches[messageID]["winsNeeded"] == 3:
+              matches[messageID]["banning"] = matches[messageID]["loser"]
+            elif  matches[messageID]["winsNeeded"] == 2:
+               matches[messageID]["banning"] = matches[messageID]["winner"]
             matches[messageID]["winner"] = "N/A"
             matches[messageID]["loser"] = "N/A"
             # print("winner should be blank: ", matches[messageID]["winner"])
@@ -1304,23 +1402,42 @@ async def on_reaction_add(reaction, user):
                 await matchWindowObj.unpin()
 
             #otherwise
-            else:
-                banning = matches[messageID]["banning"]
-                embed = matchWindowObj.embeds[0]
-                embed.add_field(name=f"Game {matches[messageID]['gameCount']}",
+            elif matches[messageID]["winsNeeded"] == 2:
+                  banning = matches[messageID]["banning"]
+                  embed = matchWindowObj.embeds[0]
+                  embed.add_field(name=f"Game {matches[messageID]['gameCount']}",
                                 value=f""
                                       f"\n"
                                       f"Waiting for <@{banning}> to ban. (click on the reactions):\n"
                                       f"{showstagelist(matches[messageID]['stages'])}",
                                 inline=False)
-                await matchWindowObj.edit(embed=embed)
-                for icon in winloss:
+                  await matchWindowObj.edit(embed=embed)
+                  for icon in winloss:
                     await matchWindowObj.clear_reaction(icon)
-                newstages = []
-                for stageicon in matches[messageID]['stages']:
+                  newstages = []
+                  for stageicon in matches[messageID]['stages']:
                     newstages.append(stage2emotes[stageicon])
                 # print("newstages", newstages)
-                for icon in newstages:
+                  for icon in newstages:
+                    await matchWindowObj.add_reaction(icon)
+
+            elif matches[messageID]["winsNeeded"] == 3:
+                  banning = matches[messageID]["banning"]
+                  embed = matchWindowObj.embeds[0]
+                  embed.add_field(name=f"Game {matches[messageID]['gameCount']}",
+                                value=f""
+                                      f"\n"
+                                      f"Waiting for <@{banning}> to choose their counterpick. (click on the reactions):\n"
+                                      f"{showstagelist(matches[messageID]['stages'])}",
+                                inline=False)
+                  await matchWindowObj.edit(embed=embed)
+                  for icon in winloss:
+                    await matchWindowObj.clear_reaction(icon)
+                  newstages = []
+                  for stageicon in matches[messageID]['stages']:
+                    newstages.append(stage2emotes[stageicon])
+                # print("newstages", newstages)
+                  for icon in newstages:
                     await matchWindowObj.add_reaction(icon)
 
         # if the reaction is coming from a mod
@@ -1808,8 +1925,73 @@ async def on_message(message):
 
         # event for character selections game 2 and onwards
         elif matches[matchWindowID]['gameCount'] >= 2:
+          if matches[matchWindowID]['winsNeeded'] == 3:
             selection = str(message.content.lower().strip())
 
+            if selection in brawlChara.keys():
+                matches[matchWindowID]['players'][authorID]['character'] = brawlChara[selection]
+                
+            opponentDM = client.get_user(authorID)
+            playerDM = client.get_user(opponents[authorID])
+            selectedDM = await opponentDM.create_dm()
+            selectedChara = discord.Embed(title=f"{matches[matchWindowID]['players'][authorID]['character']} selected!",
+                                          description=f"Return to matchmaking: Click here -> {matchchannel}",
+                                          color=defaultColor)
+            selectedChara.set_thumbnail(
+                url="https://cdn.discordapp.com/emojis/818715531954880543.webp?size=160&quality=lossless"
+            )
+            await selectedDM.send(embed=selectedChara)
+
+            # if the winner is selecting their character
+            if matches[matchWindowID]["heading"] == "N/A":
+                matches[matchWindowID]["selections"][authorID] = False
+                matches[matchWindowID]["selections"][opponents[authorID]] = True
+                p1name = str(client.get_user(authorID))
+                chara1 = matches[matchWindowID]['players'][authorID]['character']
+                matches[matchWindowID]["heading"] = f"({p1name[:-5]}) {chara1} {versus} "
+                # print(matches[matchWindowID]["heading"])  # testing
+                stage = matches[matchWindowID]["stages"][0]
+                stageName = emotes2stage[stage]
+
+                playerCharacter = matches[matchWindowID]['players'][authorID]['character']
+                gameCount = matches[matchWindowID]['gameCount']
+                selectDM = await playerDM.create_dm()
+                charaSelect = discord.Embed(title=f"[Game {gameCount} | {stage} {stageName}]",
+                                            description=f"{opponentDM} is going {playerCharacter}.\n"
+                                                        f"Choose your character for Game {gameCount}! \n Type out what character you will use.\n"
+                                                        f"If you're staying on the same character, type ''stay''.\n"
+                                                        f"\n"
+                                                        f"If you're having trouble selecting a character, type ``-characters``",
+      
+                                            color=defaultColor)
+                charaSelect.set_thumbnail(
+                    url="https://cdn.discordapp.com/emojis/919693698093183036.webp?size=160&quality=lossless")
+                await selectDM.send(embed=charaSelect)
+
+            # if the loser is selecting their character
+            elif matches[matchWindowID]["heading"] != "N/A":
+                matches[matchWindowID]["selections"][authorID] = False
+                p2name = str(client.get_user(authorID))
+                chara2 = matches[matchWindowID]['players'][authorID]['character']
+                matches[matchWindowID]["heading"] += f"{chara2} ({p2name[:-5]})\n"
+                # print(matches[matchWindowID]["heading"])  # testing
+
+                matchWindowObj = matches[matchWindowID]["messageObj"]
+                embedCount = matches[matchWindowID]["gameCount"] - 1
+                newEmbed = matchWindowObj.embeds[0]
+                newEmbed.set_field_at(embedCount,
+                                      name=f"Game {matches[matchWindowID]['gameCount']}",
+                                      value=f"{matches[matchWindowID]['heading']}"
+                                            f"Stage:\n"
+                                            f"{matches[matchWindowID]['stages'][0]} {emotes2stage[matches[matchWindowID]['stages'][0]]} \n",
+                                      inline=False
+                                      )
+                await matchWindowObj.edit(embed=newEmbed)
+                for icon in winloss:
+                    await matchWindowObj.add_reaction(icon)
+
+          elif matches[matchWindowID]['winsNeeded'] == 2:
+            selection = str(message.content.lower().strip())
             if selection in brawlChara.keys():
                 matches[matchWindowID]['players'][authorID]['character'] = brawlChara[selection]
 

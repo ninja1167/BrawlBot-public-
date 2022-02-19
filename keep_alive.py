@@ -1,7 +1,6 @@
 from flask import Flask
 from threading import Thread
-import sys
-import time
+
 
 app = Flask('')
 
