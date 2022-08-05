@@ -25,13 +25,13 @@ if clonebot == False:
     miscChannel = 928465831422230531
     modChannel = 928465831422230531
     matchChannel = 929231150386409512
-    testChannel = 928465831422230531
+    
 elif clonebot == True:
     searchChannel = 929231150386409512
     miscChannel = 928465831422230531
     modChannel = 928465831422230531
     matchChannel = 929231150386409512
-    testChannel = 928465831422230531
+   
   
     
 
@@ -561,12 +561,12 @@ async def helpme(ctx):
     await dm.send(f"**command prefix: ``-``**\n"
                   f"(begin every command with ``-`` in order for BrawlBot to recognize your command.)\n"
                   f"\n"
-                  f"**__ranked__** ``(Set Type)``\n"
+                  f"**__Set Type__\n"
                   f"> This command begins a search queue for a ranked set. (Only usable in <#{searchChannel}>)\n"
                   f"> Set Type = ``bo3`` (best of 3) or ``bo5`` (best of 5)\n"
                   f"> \n"
                   f"> examples:\n"
-                  f"> ``-ranked bo3``\n"
+                  f"> ``-bo3``\n"
                   f"**__rank__**\n"
                   f"> This command allows you to view your own rank and standing in all ladders you're participating in. (Only usable in <#{miscChannel}>)\n"
                   f"> \n"
@@ -597,7 +597,7 @@ async def helpme(ctx):
                   f"**__smashdown__**\n"
                   f"> This command sets up a smashdown card to help keep track of characters and score.\n"
                   f"> (usable in the freeplay channels)"
-                  f"> Smashdown will work. \n")
+                  f"> Smashdown will not work. \n")
     await ctx.send("I sent you a DM with a list of my commands.")
 
 
