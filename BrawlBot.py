@@ -22,16 +22,17 @@ client = commands.Bot(command_prefix=cpfx, intents=intents)
 
 if clonebot == False:
     searchChannel = 929231150386409512
-    miscChannel = 929231150386409512
-    modChannel = 929116688820080693
+    miscChannel = 928465831422230531
+    modChannel = 928465831422230531
     matchChannel = 929231150386409512
     testChannel = 928465831422230531
 elif clonebot == True:
     searchChannel = 929231150386409512
-    miscChannel = 929231150386409512
-    modChannel = 929116688820080693
+    miscChannel = 928465831422230531
+    modChannel = 928465831422230531
     matchChannel = 929231150386409512
     testChannel = 928465831422230531
+  
     
 
 channelList = [searchChannel, miscChannel, modChannel, matchChannel]
@@ -687,7 +688,7 @@ async def ban(ctx):
     if ctx.message.channel.id != modChannel:
         return
 
-    playerID = int(ctx.message.content[8:-1])
+    playerID = int(ctx.message.content[7:-1])
     # print(playerID)
 
     # checks if player in question is a real person
@@ -720,7 +721,7 @@ async def unban(ctx):
     # checks if command is from the mod channel
     if ctx.message.channel.id != modChannel:
         return
-    playerID = int(ctx.message.content[10:-1])
+    playerID = int(ctx.message.content[9:-1])
 
     # checks if player in question is a real person
     if client.get_user(playerID) == None:
@@ -806,7 +807,28 @@ async def top(ctx):
     #else:
         #await ctx.send("Please specify what type of leaderboard you'd like to view. (NETP or WIFI)", delete_after=10)
 
+@client.command()
+async def rules(ctx):
+  await ctx.send ("Respect the other members of the server")
 
+@client.command()
+async def framedata(ctx):
+    await ctx.send("http://meleeframedata.com/")
+                    
+@client.command()
+async def btt(ctx):
+ await ctx.send("Break the Targets records! Please post your clip and time in <#957750657237016616>. If you forgot to record, check your slippi files! https://docs.google.com/spreadsheets/d/1K6IQ08mby2mwgLnR9pPc0r24sIKA-ItpJb96khjQ7So/edit?usp=sharing")
+
+
+    
+@client.command()
+async def join(ctx):
+    channel = ctx.author.voice.channel
+    await channel.connect()
+@client.command()
+async def leave(ctx):
+    await ctx.voice_client.disconnect()
+  
 @client.command()
 async def rank(ctx):
     # checks if command is coming from it's designated channel
