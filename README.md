@@ -10,4 +10,5 @@ Run!
 
 use -helpme in the server or -help to recieve information about the bot.
 If you have any trouble, dm ninja1167#2527 on Discord
+
 Note on WIFI: This was forked from the bot of the Brawl server made by APR Financing. There were two different ladders there. However, WIFI is not functional, and there is only one useable ladder. It was just left in the code in some spots.
