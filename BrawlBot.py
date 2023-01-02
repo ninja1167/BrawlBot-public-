@@ -806,27 +806,6 @@ async def top(ctx):
     #else:
         #await ctx.send("Please specify what type of leaderboard you'd like to view. (NETP or WIFI)", delete_after=10)
 
-@client.command()
-async def rules(ctx):
-  await ctx.send ("Respect the other members of the server")
-
-@client.command()
-async def framedata(ctx):
-    await ctx.send("http://meleeframedata.com/")
-                    
-@client.command()
-async def btt(ctx):
- await ctx.send("Break the Targets records! Please post your clip and time in <#957750657237016616>. If you forgot to record, check your slippi files! https://docs.google.com/spreadsheets/d/1K6IQ08mby2mwgLnR9pPc0r24sIKA-ItpJb96khjQ7So/edit?usp=sharing")
-
-
-    
-@client.command()
-async def join(ctx):
-    channel = ctx.author.voice.channel
-    await channel.connect()
-@client.command()
-async def leave(ctx):
-    await ctx.voice_client.disconnect()
   
 @client.command()
 async def rank(ctx):
