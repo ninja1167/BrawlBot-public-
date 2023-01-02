@@ -4,7 +4,6 @@ import discord
 import random
 import json
 from discord.ext import commands
-from keep_alive import keep_alive
 rankvar = 1
 
 
@@ -2079,7 +2078,6 @@ async def on_message(message):
                 for icon in winloss:
                     await matchWindowObj.add_reaction(icon)
 
-keep_alive()
 client.run(my_secret)
 
 
